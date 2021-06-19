@@ -53,3 +53,9 @@ router.get("/getdata/:assetnumber", (req,res) => {
 //   "latitude" : "51.5065055",
 //   "longitude" : "-2.5674287"
 // }
+
+// {
+//   "assetnumber" : "456",
+//   "latitude" : "10.8509686",
+//   "longitude" : "106.6963347"
+// }

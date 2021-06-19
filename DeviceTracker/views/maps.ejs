@@ -4,13 +4,44 @@
     async
 ></script>
 <script>
-    let map;
 
     function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8,
+
+        const latlng = {
+            lat: -34.397, 
+            lng: 150.644
+        };
+
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: latlng,
+            zoom: 12,
         });
+
+        new google.maps.Marker({
+            position: latlng,
+            map,
+            title: "New Map"
+        })
+    }
+
+    function updatemap(lat,lng) {
+        var mylatlng = new google.maps.LatLng(lat,lng);
+        var mapOption = {
+            zoom: 12,
+            center: mylatlng
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOption);
+        var marker = new google.maps.Marker({
+            position: mylatlng,
+            title: "Asset Number"
+        });
+
+        marker.setMap(map)
+    }
+
+    function updatelocation(id){
+        updatemap(data[id].latitude, data[id].longitude);
     }
 
 </script>
