@@ -5,21 +5,21 @@
 #include <TinyGPS++.h>
 
 #ifndef STASSID
-#define STASSID "SSID"
-#define STAPSK  "PWD"
+#define STASSID "VM7634161"
+#define STAPSK  "709FiltonAve"
 #endif
 
 const char* ssid     = STASSID;
 const char* password = STAPSK;
 
 static const int RXPin = D6, TXPin = D5;
-static const uint32_t GPSBaud = 9600;
+static const uint32_t GPSBaud = 115200;
 
 //Replace the ngrok url here
-const char* host = "http://410d5092123d.ngrok.io";
+const char* host = "http://0b17aafcc4b5.ngrok.io/addgpsdata";
 const uint16_t port = 80;
 
-String assetnumber = "1245645";
+String assetnumber = "123";
 
 
 TinyGPSPlus gps;
@@ -87,7 +87,7 @@ void loop()
           serializeJson(doc, json);
           Serial.println(json);
           //Replace the ngrok url here
-          http.begin("http://410d5092123d.ngrok.io/addgpsdata");      //Specify request destination
+          http.begin(client,"http://0b17aafcc4b5.ngrok.io/addgpsdata");      //Specify request destination
           http.addHeader("Content-Type", "application/json");
           int httpCode = http.POST(json);   //Send the request
           String payload = http.getString();                                        //Get the response payload
